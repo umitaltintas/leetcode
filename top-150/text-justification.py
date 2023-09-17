@@ -34,5 +34,21 @@ class Solution:
                 spaces = [base_spaces + 1] * extra_spaces + [base_spaces] * (len(line_words) - 1 - extra_spaces)
                 justified_lines.append(addWordsToLine(line_words, spaces))
         return justified_lines
+    
+    
+import unittest
 
+def run_tests():
+    tests = [
+        [["This", "is", "an", "example", "of", "text", "justification."], 16, ["This    is    an", "example  of text", "justification.  "]],
+        [["What","must","be","acknowledgment","shall","be"], 16, ["What   must   be", "acknowledgment  ", "shall be        "]],
+        [["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"], 20, ["Science  is  what we", "understand      well", "enough to explain to", "a  computer.  Art is", "everything  else  we", "do                  "]]
+    ]
+    sol = Solution()
+    for test in tests:
+        words, maxWidth, expected = test
+        result = sol.fullJustify(words, maxWidth)
+        assert result == expected
 
+if __name__ == "__main__":
+    unittest.main()
